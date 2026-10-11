@@ -1,0 +1,24 @@
+name: Release Solitär
+
+on:
+  push:
+    tags:
+      - 'solitar-v*' # Triggers on tags like solitar-v1.0.0
+
+jobs:
+  build-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Package Solitär
+        run: |
+          zip -r solitar-release.zip Solitär -x "Solitär/.env" "Solitär/*.db" "Solitär/__pycache__/*"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: solitar-release.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
