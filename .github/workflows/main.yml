@@ -3,7 +3,7 @@ name: Release Solitär
 on:
   push:
     tags:
-      - 'solitar-v*' # Triggers on tags like solitar-v1.0.0
+      - 'solitär-v*' # Triggers on tags like solitar-v1.0.0
 
 jobs:
   build-release:
