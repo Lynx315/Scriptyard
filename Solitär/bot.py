@@ -1,3 +1,4 @@
+#initial release of solitar bot
 
 import asyncio
 import logging
